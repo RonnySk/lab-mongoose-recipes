@@ -55,10 +55,30 @@ mongoose
   // interation 3
 
   .then(() => {
-    Recipe.insertMany(data)
-    // console.log(`Recipe title: ${data.title} `);
-    return 
+    
+    // console.log() is not working!!
+    console.log(`All Recipe title: ${data.title} `); 
+    return Recipe.insertMany(data)
   })
+//  interation 4
+
+  .then(()=> {
+    console.log("Recipe 'Rigatoni alla Genovese' update successfully!")
+    return Recipe.findOneAndUpdate({title: "Rigatoni alla Genovese"}, {duration: 100})
+  })
+
+// interation 5
+
+.then(()=> {
+  console.log("Recipe 'Carrot Cake' removed successfully!");
+  return Recipe.deleteOne({title: "Carrot Cake"})
+})
+
+// interation 6
+
+.then(()=>{
+  
+})
   .catch(error => {
     console.error('Error connecting to the database', error);
   });
